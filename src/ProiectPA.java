@@ -533,7 +533,7 @@ public class ProiectPA {
             public void actionPerformed(ActionEvent e) {
                 Associative  associative = new Associative();
                 associative.setId_movie(Integer.parseInt(txtAssociativeMovieId.getText()));
-                associative.setId_movie(Integer.parseInt(txtAssociativeId.getText()));
+                associative.setId_associative(Integer.parseInt(txtAssociativeId.getText()));
                 associative.setId_gen(Integer.parseInt(txtAssociativeGenreId.getText()));
                 try {
                     AssociativeRepo associativeRepo = new AssociativeRepo();
@@ -629,13 +629,13 @@ public class ProiectPA {
                 directors.setId_director(Integer.parseInt(txtDirectorsId.getText()));
                 try {
                     DirectorsRepo directorsRepo = new DirectorsRepo();
-                    directorsRepo.create(directors);
+                    directorsRepo.update(directors);
                     JOptionPane.showMessageDialog(null, r.getString("Updated"));
                     txtDirectorsName.setText("");
                     txtDirectorsMovieId.setText("");
                     txtDirectorsId.setText("");
                     txtDirectorsName.requestFocus();
-                } catch (SQLException e1) {
+                } catch (SQLException | ParseException e1) {
                     e1.printStackTrace();
                 }
                 showDirectors();
@@ -716,12 +716,12 @@ public class ProiectPA {
                 genres.setName(txtGenresName.getText());
                 try {
                     GenresRepo genresRepo = new GenresRepo();
-                    genresRepo.create(genres);
+                    genresRepo.update(genres);
                     JOptionPane.showMessageDialog(null, r.getString("Updated"));
                     txtGenresId.setText("");
                     txtGenresName.setText("");
                     txtGenresName.requestFocus();
-                } catch (SQLException e1) {
+                } catch (SQLException | ParseException e1) {
                     e1.printStackTrace();
                 }
                 showGenres();
